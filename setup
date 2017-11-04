@@ -1,0 +1,21 @@
+#!/bin/bash
+
+if [ ! -d ~/.vim_backup ]; then
+  echo "Creating vim backup directory."
+  mkdir ~/.vim_backup
+fi
+
+if [ ! -d ~/.vim_swp ]; then
+  echo "Creating vim swp directory."
+  mkdir ~/.vim_swp
+fi
+
+echo "Creating symlinks"
+ln -nsf "$PWD"/.zshrc ~/.zshrc
+ln -nsf "$PWD"/.tmux.conf ~/.tmux.conf
+ln -nsf "$PWD"/.vimrc ~/.vimrc
+ln -nsf "$PWD"/.vim ~/.vim
+
+vim +PlugInstall +qall
+
+echo "Setup is complete"
