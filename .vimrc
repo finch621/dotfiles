@@ -128,7 +128,7 @@ set notimeout ttimeout ttimeoutlen=200
 set pastetoggle=<f8>
 
 " shell to use
-set sh=/bin/bash
+set sh=/bin/zsh
 
 " backup directory
 set backupdir=~/.vim_backup//
@@ -204,6 +204,12 @@ nmap <leader>i :PlugInstall<cr>
 " split windows
 nmap <leader>s :sp<cr><c-w><c-w>
 nmap <leader>v :vsp<cr><c-w><c-w>
+
+" smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " switch buffers
 nmap <leader>b :bp<cr>
