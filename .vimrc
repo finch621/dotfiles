@@ -23,14 +23,9 @@ Plug 'justinmk/vim-syntax-extra'
 
 " Syntax, Language and Framework Support
 Plug 'scrooloose/syntastic'
-Plug 'vim-scripts/ruby-matchit'
-Plug 'vim-ruby/vim-ruby'
-Plug 'nelstrom/vim-textobj-rubyblock' | Plug 'kana/vim-textobj-user'
 Plug 'elzr/vim-json'
 Plug 'ternjs/tern_for_vim'
-Plug 'kchmck/vim-coffee-script'
 Plug 'ingydotnet/yaml-vim'
-Plug 'tpope/vim-rails'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
@@ -187,7 +182,7 @@ set shortmess+=c
 let mapleader = ','
 
 " exit insert mode
-imap kj <esc>
+imap jk <esc>
 
 " write file insert mode
 imap <leader>w <esc> :w<cr>
@@ -228,6 +223,9 @@ map <leader><tab> :NERDTreeToggle<cr>
 
 " toggle tagbar
 map <leader>t :TagbarToggle<cr>
+
+" toggle ctrlp
+map <leader>f <C-p>
 
 " move quickly
 imap <c-d> <c-[>diwi
