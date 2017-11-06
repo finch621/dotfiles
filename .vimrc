@@ -224,9 +224,6 @@ map <leader><tab> :NERDTreeToggle<cr>
 " toggle tagbar
 map <leader>t :TagbarToggle<cr>
 
-" toggle ctrlp
-map <leader>f <C-p>
-
 " move quickly
 imap <c-d> <c-[>diwi
 
@@ -298,6 +295,7 @@ let g:UltiSnipsJumpForwardTrigger      = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger     = "<s-tab>""
 
 " Plugin: CtrlP
+let g:ctrlp_map = '<leader>f'
 let g:ctrlp_working_path_mode='r'
 let g:ctrlp_custom_ignore = 'dist\|/node_modules\|build\|.git\'
 let g:ctrlp_show_hidden = 1
