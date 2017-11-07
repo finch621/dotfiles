@@ -15,6 +15,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/BufOnly.vim'
@@ -44,13 +45,14 @@ Plug 'dylon/vim-antlr'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Quramy/tsuquyomi' | Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Quramy/vim-js-pretty-template'
+Plug 'mtscout6/syntastic-local-eslint.vim'
 call plug#end()
 
 " no need for compat with vi
 set nocompatible
 
 " syntax highlighting
-syntax on
+syntax enable
 
 set background=dark
 
@@ -232,6 +234,10 @@ imap <c-d> <c-[>diwi
 " search visually selected text
 vnoremap // y/<c-r>"<cr>
 
+" toggle/close error location list
+nmap <leader>e :Errors<cr>
+nmap <leader><s-e> :lclose<cr>
+
 " COMMANDS
 
 " Automatically reload vimrc file on edit
@@ -270,16 +276,21 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_debug = 3
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_wq = 0
+let g:syntastic_loc_list_height = 5
+let g:syntastic_auto_loc_list = 0
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 1
 let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_swift_checkers = ['swiftpm', 'swiftlint']
-let g:syntastic_html_checkers = []
-let g:syntastic_lex_checkers = []
-let g:syntastic_yacc_checkers = []
+let g:syntastic_error_symbol = '❌'
+let g:syntastic_style_error_symbol = '⁉️'
+let g:syntastic_warning_symbol = '⚠️'
+let g:syntastic_style_warning_symbol = '💩'
+
+highlight link SyntasticErrorSign SignColumn
+highlight link SyntasticWarningSign SignColumn
+highlight link SyntasticStyleErrorSign SignColumn
+highlight link SyntasticStyleWarningSign SignColumn
 
 " Plugin: NERDTree
 let NERDTreeStatusline= "%{ getcwd() }"
