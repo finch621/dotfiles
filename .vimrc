@@ -209,6 +209,7 @@ map <leader>l <C-W>l
 
 " switch buffers
 nmap <leader>b :bp<cr>
+nmap <leader><s-b> :bn<cr>
 
 " new line and insert cursor between brackets
 imap <leader>s <cr><esc>O
