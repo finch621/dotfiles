@@ -20,6 +20,7 @@ Plug 'tpope/vim-commentary'
 Plug 'vim-scripts/BufOnly.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-syntax-extra'
+Plug 'matze/vim-move'
 
 " Syntax, Language and Framework Support
 Plug 'scrooloose/syntastic'
@@ -259,6 +260,9 @@ au BufRead,BufNewFile *.g4 set filetype=antlr4
 runtime macros/matchit.vim
 
 " PLUGIN SETTINGS
+
+" Plugin: move
+let g:move_key_modifier = 'C' 
 
 " Plugin: syntastic
 set statusline+=%#warningmsg#
