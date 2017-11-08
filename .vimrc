@@ -269,7 +269,7 @@ runtime macros/matchit.vim
 " PLUGIN SETTINGS
 
 " Plugin: move
-let g:move_key_modifier = 'C' 
+let g:move_key_modifier = 'C'
 
 " Plugin: gitgutter
 highlight clear SignColumn
