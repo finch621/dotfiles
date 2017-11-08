@@ -271,6 +271,9 @@ runtime macros/matchit.vim
 " Plugin: move
 let g:move_key_modifier = 'C' 
 
+" Plugin: gitgutter
+highlight clear SignColumn
+
 " Plugin: syntastic
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
@@ -400,8 +403,8 @@ nnoremap <leader>gp :Ggrep<space>
 nnoremap <leader>gm :Gmove<space>
 nnoremap <leader>gb :Git branch<space>
 nnoremap <leader>go :Git checkout<space>
-nnoremap <leader>gps :Dispatch! git push<cr>
-nnoremap <leader>gpl :Dispatch! git pull<cr>
+nnoremap <leader>gps :Gpush<space>
+nnoremap <leader>gpl :Gpull<space>
 
 " Plugin: vim-easy-align
 " start interactive EasyAlign in visual mode (e.g. vip,a)
