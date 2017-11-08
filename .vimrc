@@ -204,10 +204,10 @@ nmap <leader>s :sp<cr><c-w><c-w>
 nmap <leader>v :vsp<cr><c-w><c-w>
 
 " smart way to move between windows
-map <leader>j <C-W>j
-map <leader>k <C-W>k
-map <leader>h <C-W>h
-map <leader>l <C-W>l
+map <leader>j <c-w>j
+map <leader>k <c-w>k
+map <leader>h <c-w>h
+map <leader>l <c-w>l
 
 " switch buffers
 nmap <leader>b :bp<cr>
