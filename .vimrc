@@ -187,6 +187,9 @@ let mapleader = ','
 " exit insert mode
 imap jk <esc>
 
+" map shell mode
+map <leader>sh :sh<cr>
+
 " write file insert mode
 imap <leader>w <esc> :w<cr>
 
@@ -433,4 +436,4 @@ let g:better_whitespace_enabled = 0
 let g:AutoPairsShortcutBackInsert = '<c-b>'
 
 " Plugin: mxw/vim-jsx
-" let g:jsx_ext_required = 0
+let g:jsx_ext_required = 0
