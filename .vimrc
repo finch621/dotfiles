@@ -47,6 +47,7 @@ Plug 'Quramy/tsuquyomi' | Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Quramy/vim-js-pretty-template'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'mattn/emmet-vim'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 call plug#end()
 
 " no need for compat with vi
