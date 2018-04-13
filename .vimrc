@@ -3,7 +3,8 @@ call plug#begin('~/.vim/plugins')
 Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree',    { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
-"Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugins/YouCompleteMe/install.py --all' }
+" Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugins/YouCompleteMe/install.py --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
@@ -11,7 +12,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'tpope/vim-unimpaired'
-Plug 'ntpeters/vim-better-whitespace'
+" Plug 'ntpeters/vim-better-whitespace'
 Plug 'scrooloose/nerdcommenter'
 Plug 'tpope/vim-git'
 Plug 'tpope/vim-fugitive'
@@ -22,6 +23,7 @@ Plug 'vim-scripts/BufOnly.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'matze/vim-move'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " Syntax, Language and Framework Support
 Plug 'scrooloose/syntastic'
@@ -48,6 +50,8 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+
+" Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " no need for compat with vi
