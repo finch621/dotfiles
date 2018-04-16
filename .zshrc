@@ -85,9 +85,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias b="systemctl -i poweroff"
+alias tns="tmux -u new -s"
+alias tat="tmux -u a -t"
 
 # support for 256 color schemes
 export TERM="xterm-256color"
 
 # rm * sanity check
 setopt RM_STAR_WAIT
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

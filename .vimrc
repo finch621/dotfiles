@@ -24,6 +24,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'justinmk/vim-syntax-extra'
 Plug 'matze/vim-move'
 " Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'junegunn/vim-emoji'
 
 " Syntax, Language and Framework Support
 Plug 'scrooloose/syntastic'
@@ -443,3 +444,6 @@ let g:AutoPairsShortcutBackInsert = '<c-b>'
 
 " Plugin: mxw/vim-jsx
 let g:jsx_ext_required = 0
+
+" Plugin: junegunn/vim-emoji
+set completefunc=emoji#complete
