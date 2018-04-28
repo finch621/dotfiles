@@ -244,6 +244,9 @@ imap <c-d> <c-[>diwi
 " search visually selected text
 vnoremap // y/<c-r>"<cr>
 
+" search and replace visually selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
 " toggle/close error location list
 nmap <leader>e :Errors<cr>
 nmap <leader><s-e> :lclose<cr>
