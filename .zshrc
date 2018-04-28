@@ -85,6 +85,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias b="systemctl -i poweroff"
+alias t="tmux -u"
 alias tns="tmux -u new -s"
 alias tat="tmux -u a -t"
 
