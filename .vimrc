@@ -51,7 +51,6 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-
 " Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
@@ -447,6 +446,9 @@ let g:AutoPairsShortcutBackInsert = '<c-b>'
 
 " Plugin: mxw/vim-jsx
 let g:jsx_ext_required = 0
+
+" Plugin: mattn/emmet-vim
+let g:user_emmet_leader_key='<c-c>'
 
 " Plugin: junegunn/vim-emoji
 set completefunc=emoji#complete
