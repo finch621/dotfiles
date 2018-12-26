@@ -51,8 +51,11 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-plugins=(... wd)
+plugins=(
+  git
+  wd
+  tmux
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,10 +92,6 @@ alias b="systemctl -i poweroff"
 if [[ $(uname) == 'Darwin' ]]; then
   alias b="sudo shutdown -h now"
 fi
-
-alias t="tmux -u"
-alias tns="tmux -u new -s"
-alias tat="tmux -u a -t"
 
 # support for 256 color schemes
 export TERM="xterm-256color"
