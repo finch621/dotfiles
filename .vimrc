@@ -51,6 +51,7 @@ Plug 'Quramy/vim-js-pretty-template'
 Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'cespare/vim-toml'
 " Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
@@ -117,7 +118,9 @@ set mouse=a
 
 set ttyfast
 
-set ttymouse=xterm2
+if !has('nvim')
+  set ttymouse=xterm2
+endif
 
 " set command window height to 2 lines
 set cmdheight=2

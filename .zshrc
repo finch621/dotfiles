@@ -55,6 +55,7 @@ plugins=(
   git
   wd
   tmux
+  thefuck
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -88,9 +89,15 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias b="systemctl -i poweroff"
+alias wtf=fuck
 
 if [[ $(uname) == 'Darwin' ]]; then
   alias b="sudo shutdown -h now"
+fi
+
+if [[ -x $(command -v nvim) ]]; then
+  alias vi=nvim
+  alias vim=nvim
 fi
 
 # support for 256 color schemes
@@ -108,5 +115,3 @@ export PATH=$PATH:$ANDROID_HOME/tools
 export PATH=$PATH:$ANDROID_HOME/tools/bin
 export PATH=$PATH:$ANDROID_HOME/platform-tools
 export PATH=$PATH:/Applications/Visual\ Studio\ Code.app/Contents/Resources/app/bin
-
-eval $(thefuck --alias)
