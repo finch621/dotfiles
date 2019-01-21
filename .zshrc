@@ -56,6 +56,7 @@ plugins=(
   wd
   tmux
   thefuck
+  vagrant
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -88,19 +89,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias b="systemctl -i poweroff"
-alias rb=reboot
-alias tf=fuck
-alias wtf=fuck
-
-if [[ $(uname) == 'Darwin' ]]; then
-  alias b="sudo shutdown -h now"
-fi
-
-if [[ -x $(command -v nvim) ]]; then
-  alias vi=nvim
-  alias vim=nvim
-fi
 
 # support for 256 color schemes
 export TERM="xterm-256color"
