@@ -52,6 +52,7 @@ Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'cespare/vim-toml'
+Plug 'terryma/vim-multiple-cursors'
 " Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
