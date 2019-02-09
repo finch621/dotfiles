@@ -16,6 +16,7 @@ ln -nsf "$PWD"/.tmux.conf ~/.tmux.conf
 ln -nsf "$PWD"/.vimrc ~/.vimrc
 ln -nsf "$PWD"/.vim ~/.vim
 ln -nsf "$PWD"/aliases.zsh ~/.oh-my-zsh/custom/aliases.zsh
+ln -nsf "$PWD"/nvim-config ~/.config/nvim
 
 vim +PlugInstall +qall
 
