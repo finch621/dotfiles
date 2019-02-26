@@ -55,6 +55,7 @@ Plug 'mtscout6/syntastic-local-eslint.vim'
 Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'cespare/vim-toml'
+Plug 'posva/vim-vue'
 call plug#end()
 
 " no need for compat with vi
