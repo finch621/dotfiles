@@ -56,6 +56,7 @@ Plug 'mattn/emmet-vim'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'cespare/vim-toml'
 Plug 'posva/vim-vue'
+Plug 'editorconfig/editorconfig-vim'
 call plug#end()
 
 " no need for compat with vi
@@ -315,6 +316,7 @@ highlight link SyntasticStyleWarningSign SignColumn
 
 " Plugin: NERDTree
 let NERDTreeStatusline= "%{ getcwd() }"
+let g:NERDTreeWinSize=40
 
 " Plugin: YouCompleteMe
 let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
@@ -458,3 +460,6 @@ let g:user_emmet_leader_key='<c-c>'
 
 " Plugin: junegunn/vim-emoji
 set completefunc=emoji#complete
+
+" Plugin: prettier/vim-prettier
+let g:prettier#config#single_quote='true'
