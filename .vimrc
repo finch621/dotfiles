@@ -463,3 +463,4 @@ set completefunc=emoji#complete
 
 " Plugin: prettier/vim-prettier
 let g:prettier#config#single_quote='true'
+let g:prettier#config#bracket_spacing = 'true'
