@@ -109,3 +109,7 @@ export PATH=$PATH:$HOME/.local/bin
 function homestead() {
   ( cd ~/Homestead && vagrant $* )
 }
+
+if [ -f $HOME/.dir_colors/dircolors ]
+    then eval `dircolors $HOME/.dir_colors/dircolors`
+fi

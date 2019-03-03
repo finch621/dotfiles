@@ -4,7 +4,7 @@ Plug 'tpope/vim-sensible'
 Plug 'ervandew/supertab'
 Plug 'scrooloose/nerdtree',    { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'Valloric/YouCompleteMe', { 'do': '~/.vim/plugins/YouCompleteMe/install.py --all' }
+Plug 'Valloric/YouCompleteMe', { 'do': 'python3 ~/.vim/plugins/YouCompleteMe/install.py --clang-completer --ts-completer' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'majutsushi/tagbar'
@@ -57,6 +57,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'cespare/vim-toml'
 Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
+Plug 'omnisharp/omnisharp-vim'
 call plug#end()
 
 " no need for compat with vi
