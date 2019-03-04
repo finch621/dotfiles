@@ -27,7 +27,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/vim-emoji'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kabbamine/vcoolor.vim'
-" Plug 'ryanoasis/vim-devicons'
+Plug 'ryanoasis/vim-devicons'
 
 " Syntax, Language and Framework Support
 Plug 'scrooloose/syntastic'
