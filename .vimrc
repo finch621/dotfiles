@@ -415,21 +415,21 @@ nmap <silent> <leader>x :bp\|bd #<cr>
 nmap <silent> <leader><s-x> :BufOnly<cr>
 
 " Plugin: vim-fugitive
-nnoremap <leader>gs :Gstatus<cr>
-nnoremap <leader>gc :Gcommit -v -q<cr>
-nnoremap <leader>ga :Gcommit --amend<cr>
-nnoremap <leader>gt :Gcommit -v -q %<cr>
-nnoremap <leader>gd :Gdiff<cr>
-nnoremap <leader>ge :Gedit<cr>
-nnoremap <leader>gr :Gread<cr>
-nnoremap <leader>gw :Gwrite<cr><CR>
-nnoremap <leader>gl :silent! Glog<cr>
-nnoremap <leader>gp :Ggrep<space>
-nnoremap <leader>gm :Gmove<space>
+nnoremap <leader>gs :Git status<cr>
+nnoremap <leader>gc :Git commit -v -q<cr>
+nnoremap <leader>ga :Git commit --amend<cr>
+nnoremap <leader>gt :Git commit -v -q %<cr>
+nnoremap <leader>gd :Git diff<cr>
+nnoremap <leader>ge :Git edit<cr>
+nnoremap <leader>gr :Git read<cr>
+nnoremap <leader>gw :Git write<cr><CR>
+nnoremap <leader>gl :silent! Git log<cr>
+nnoremap <leader>gp :Git grep<space>
+nnoremap <leader>gm :Git move<space>
 nnoremap <leader>gb :Git branch<space>
 nnoremap <leader>go :Git checkout<space>
-nnoremap <leader>gps :Gpush<space>
-nnoremap <leader>gpl :Gpull<space>
+nnoremap <leader>gps :Git push<space>
+nnoremap <leader>gpl :Git pull<space>
 
 " Plugin: vim-easy-align
 " start interactive EasyAlign in visual mode (e.g. vip,a)
