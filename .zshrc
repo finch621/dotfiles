@@ -113,3 +113,11 @@ function homestead() {
 if [ -f $HOME/.dir_colors/dircolors ]
     then eval `dircolors $HOME/.dir_colors/dircolors`
 fi
+
+# pnpm
+export PNPM_HOME="$HOME/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
