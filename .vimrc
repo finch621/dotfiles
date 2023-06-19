@@ -36,7 +36,7 @@ Plug 'ingydotnet/yaml-vim'
 Plug 'jelera/vim-javascript-syntax'
 Plug 'pangloss/vim-javascript'
 Plug 'isRuslan/vim-es6'
-Plug 'mxw/vim-jsx'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'Matt-Deacalion/vim-systemd-syntax'
 Plug 'groenewege/vim-less', { 'for': ['less', 'scss'] }
 Plug 'tpope/vim-endwise'
