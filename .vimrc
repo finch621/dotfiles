@@ -27,7 +27,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/vim-emoji'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'kabbamine/vcoolor.vim'
-Plug 'ryanoasis/vim-devicons'
 
 " Syntax, Language and Framework Support
 Plug 'scrooloose/syntastic'
@@ -47,7 +46,7 @@ Plug 'keith/swift.vim'
 Plug 'ElmCast/elm-vim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'dylon/vim-antlr'
-" Plug 'leafgarland/typescript-vim'
+Plug 'leafgarland/typescript-vim'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'Quramy/tsuquyomi' | Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 Plug 'Quramy/vim-js-pretty-template'
@@ -58,6 +57,9 @@ Plug 'cespare/vim-toml'
 Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'omnisharp/omnisharp-vim'
+
+" always load at the end per docu
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
 
 " no need for compat with vi
@@ -70,6 +72,8 @@ set background=dark
 
 " color scheme
 colorscheme solarized
+
+set encoding=utf8
 
 " don't wrap in insert mode
 " set formatoptions-=t
