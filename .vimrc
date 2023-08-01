@@ -26,6 +26,7 @@ Plug 'matze/vim-move'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'junegunn/vim-emoji'
 Plug 'terryma/vim-multiple-cursors'
+Plug 'puremourning/vimspector'
 Plug 'kabbamine/vcoolor.vim'
 
 " Syntax, Language and Framework Support
@@ -57,6 +58,8 @@ Plug 'cespare/vim-toml'
 Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'omnisharp/omnisharp-vim'
+Plug 'prisma/vim-prisma'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " always load at the end per docu
 Plug 'ryanoasis/vim-devicons'
@@ -416,6 +419,7 @@ nmap <silent> <leader><s-x> :BufOnly<cr>
 
 " Plugin: vim-fugitive
 nnoremap <leader>gs :Git status<cr>
+nnoremap <leader>gf :Git add -p<cr>
 nnoremap <leader>gc :Git commit -v -q<cr>
 nnoremap <leader>ga :Git commit --amend<cr>
 nnoremap <leader>gt :Git commit -v -q %<cr>
@@ -423,7 +427,7 @@ nnoremap <leader>gd :Git diff<cr>
 nnoremap <leader>ge :Git edit<cr>
 nnoremap <leader>gr :Git read<cr>
 nnoremap <leader>gw :Git write<cr><CR>
-nnoremap <leader>gl :silent! Git log<cr>
+nnoremap <leader>gl :silent! Git log --oneline<cr>
 nnoremap <leader>gp :Git grep<space>
 nnoremap <leader>gm :Git move<space>
 nnoremap <leader>gb :Git branch<space>
@@ -469,3 +473,6 @@ set completefunc=emoji#complete
 " Plugin: prettier/vim-prettier
 let g:prettier#config#single_quote='true'
 let g:prettier#config#bracket_spacing = 'true'
+
+" Plugin: puremourning/vimspector
+let g:vimspector_enable_winbar=0
