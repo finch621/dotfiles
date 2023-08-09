@@ -8,37 +8,45 @@ alias b="systemctl -i poweroff"
 alias rb=reboot
 alias tf=fuck
 alias wtf=fuck
-
 if [[ $(uname) == 'Darwin' ]]; then
   alias b="sudo shutdown -h now"
 fi
 
+## neovim
 if [[ -x $(command -v nvim) ]]; then
   alias vi=nvim
   alias vim=nvim
 fi
 
 ## vagrant
-alias vhl='vagrant hosts list'
-alias vscp='vagrant scp'
-alias vsl='vagrant snapshot list'
-alias vst='vagrant snapshot take'
-alias vup="vagrant up"
-alias vupl="vagrant up 2>&1 | tee vagrant.log"
-alias vh="vagrant halt"
-alias vs="vagrant suspend"
-alias vr="vagrant resume"
-alias vrl="vagrant reload"
-alias vssh="vagrant ssh"
-alias vst="vagrant status"
-alias vp="vagrant provision"
-alias vdstr="vagrant destroy"
-# suspends all running vm machine
-alias vsrm="vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend"
-# requires vagrant-list plugin
-alias vl="vagrant list"
-# requires vagrant-hostmanager plugin
-alias vhst="vagrant hostmanager"
+if [[ -x $(command -v vagrant) ]]; then
+  alias vhl='vagrant hosts list'
+  alias vscp='vagrant scp'
+  alias vsl='vagrant snapshot list'
+  alias vst='vagrant snapshot take'
+  alias vup="vagrant up"
+  alias vupl="vagrant up 2>&1 | tee vagrant.log"
+  alias vh="vagrant halt"
+  alias vs="vagrant suspend"
+  alias vr="vagrant resume"
+  alias vrl="vagrant reload"
+  alias vssh="vagrant ssh"
+  alias vst="vagrant status"
+  alias vp="vagrant provision"
+  alias vdstr="vagrant destroy"
+  # suspends all running vm machine
+  alias vsrm="vagrant global-status | awk '/running/{print $1}' | xargs -r -d '\n' -n 1 -- vagrant suspend"
+  # requires vagrant-list plugin
+  alias vl="vagrant list"
+  # requires vagrant-hostmanager plugin
+  alias vhst="vagrant hostmanager"
+fi
+
+## pnpm
+if [[ -x $(command -v pnpm) ]]; then
+  alias p="pnpm"
+  alias px="pnpm exec"
+fi
 
 ## docker
 # function dnames-fn {
@@ -91,3 +99,7 @@ alias vhst="vagrant hostmanager"
 # alias drmid="docker rmi $( docker images -q -f dangling=true)"
 # alias drun=drun-fn
 # alias dsr=dsr-fn
+
+## dotnet
+alias dn=dotnet
+alias dnn='dotnet new'

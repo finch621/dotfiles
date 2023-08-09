@@ -57,7 +57,7 @@ Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'cespare/vim-toml'
 Plug 'posva/vim-vue'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'omnisharp/omnisharp-vim'
+Plug 'OmniSharp/omnisharp-vim'
 Plug 'prisma/vim-prisma'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -462,7 +462,7 @@ let g:better_whitespace_enabled = 0
 let g:AutoPairsShortcutBackInsert = '<c-b>'
 
 " Plugin: mxw/vim-jsx
-let g:jsx_ext_required = 0
+" let g:jsx_ext_required = 0
 
 " Plugin: mattn/emmet-vim
 let g:user_emmet_leader_key='<c-c>'
@@ -476,3 +476,11 @@ let g:prettier#config#bracket_spacing = 'true'
 
 " Plugin: puremourning/vimspector
 let g:vimspector_enable_winbar=0
+let g:vimspector_enable_mappings='HUMAN'
+" neovim limitations
+nmap <leader>di :<Plug>VimspectorBalloonEval
+xmap <leader>di :<Plug>VimspectorBalloonEval
+
+" plugin: omnisharp/omnisharp-vim
+let g:omnisharp_server_stdio = 0
+let g:OmniSharp_server_use_net6 = 1
