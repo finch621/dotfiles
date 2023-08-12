@@ -28,6 +28,7 @@ Plug 'junegunn/vim-emoji'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'puremourning/vimspector'
 Plug 'kabbamine/vcoolor.vim'
+Plug 'szw/vim-tags'
 
 " Syntax, Language and Framework Support
 Plug 'scrooloose/syntastic'
@@ -164,6 +165,9 @@ set colorcolumn=120
 " don't autowrap
 set nowrap
 
+" sign-column anti-collision
+set signcolumn=auto:2
+
 " text width
 set textwidth=80
 
@@ -204,6 +208,12 @@ set shortmess+=c
 " set langmap=jh,kt
 
 let mapleader = ','
+
+" open vimrc in a seperate vertical window
+map <leader>vm :vsp ~/.vimrc<cr>
+
+" reload my vimrc
+map <leader>vr :source $MYVIMRC<cr>
 
 " exit insert mode
 imap jk <esc>
@@ -349,7 +359,6 @@ let g:ctrlp_show_hidden = 1
 
 " Plugin: vim-tags
 let g:vim_tags_auto_generate = 1
-let g:vim_tags_project_tags_command = "{CTAGS} -R --exclude=.git --exclude=node_modules --exclude=_dev {DIRECTORY}"
 
 " Plugin: nerdcommenter
 " Add spaces after comment delimiters by default
@@ -476,10 +485,19 @@ let g:prettier#config#bracket_spacing = 'true'
 
 " Plugin: puremourning/vimspector
 let g:vimspector_enable_winbar=0
-let g:vimspector_enable_mappings='HUMAN'
-" neovim limitations
-nmap <leader>di :<Plug>VimspectorBalloonEval
-xmap <leader>di :<Plug>VimspectorBalloonEval
+" let g:vimspector_enable_mappings='VISUAL_STUDIO'
+" " neovim limitations
+nmap <leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
+nnoremap <leader>dd :call vimspector#Launch()<cr>
+nnoremap <leader>dR :call vimspector#Reset()<cr>
+nnoremap <leader>dc :call vimspector#Continue()<cr>
+nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <leader>dT :call vimspector#ClearBreakpoints()<cr>
+nmap <leader>dr <Plug>VimspectorRestart
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dh <Plug>VimspectorStepOut
+nmap <leader>dj <Plug>VimspectorStepOver
 
 " plugin: omnisharp/omnisharp-vim
 let g:omnisharp_server_stdio = 0
