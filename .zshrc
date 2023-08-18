@@ -91,7 +91,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # support for 256 color schemes
-export TERM="xterm-256color"
+# export TERM="xterm-256color"
 
 # rm * sanity check
 setopt RM_STAR_WAIT
