@@ -17,7 +17,7 @@ ln -nsf "$PWD"/.tmux/.tmux.conf ~/.tmux.conf
 ln -nsf "$PWD"/.tmux.conf.local ~/.tmux.conf.local
 ln -nsf "$PWD"/.vimrc ~/.vimrc
 ln -nsf "$PWD"/nvim-config ~/.config/nvim
-ln -nsf "$PWS"/.vim/autoload/plug.vim "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
+ln -nsf "$PWD"/.vim/autoload/plug.vim "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
 
 vim +PlugInstall +qall
 
