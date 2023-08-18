@@ -1,22 +1,22 @@
 #!/bin/bash
 
 if [ ! -d ~/.vim_backup ]; then
-  echo "Creating vim backup directory."
+  echo "Creating vim backup directory.."
   mkdir ~/.vim_backup
 fi
 
 if [ ! -d ~/.vim_swp ]; then
-  echo "Creating vim swp directory."
+  echo "Creating vim swp directory.."
   mkdir ~/.vim_swp
 fi
 
-echo "Creating symlinks"
+echo "Creating symlinks.."
 ln -nsf "$PWD"/.zshrc ~/.zshrc
-ln -nsf "$PWD"/.tmux.conf ~/.tmux.conf
+ln -nsf "$PWD"/aliases.zsh ~/.oh-my-zsh/custom/aliases.zsh
+ln -nsf "$PWD"/.tmux/.tmux.conf ~/.tmux.conf
 ln -nsf "$PWD"/.tmux.conf.local ~/.tmux.conf.local
 ln -nsf "$PWD"/.vimrc ~/.vimrc
 ln -nsf "$PWD"/.vim ~/.vim
-ln -nsf "$PWD"/aliases.zsh ~/.oh-my-zsh/custom/aliases.zsh
 ln -nsf "$PWD"/nvim-config ~/.config/nvim
 ln -nsf "$PWS"/.vim/autoload/plug.vim "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
 
