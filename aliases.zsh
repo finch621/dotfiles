@@ -12,3 +12,9 @@ fi
 if [[ -x $(command -v nvim) ]]; then
   alias nv=nvim
 fi
+
+## pnpm
+if [[ -x $(command -v pnpm) ]]; then
+    alias pn=pnpm
+    alias px=pnpx
+fi

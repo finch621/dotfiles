@@ -500,6 +500,7 @@ nnoremap <leader>gc :Git commit --verbose<cr>
 nnoremap <leader>gc! :Git commit --verbose --amend<cr>
 nnoremap <leader>gco :Git checkout<space>
 nnoremap <leader>gsh :Git show<cr>
+nnoremap <leader>gbl :Git blame -b -w<cr>
 
 " Plugin: gitgutter
 highlight clear SignColumn
@@ -520,6 +521,7 @@ nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
 
 " Plugin: coc.nvim
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 "" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 inoremap <silent><expr> <TAB>
