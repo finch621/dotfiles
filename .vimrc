@@ -571,6 +571,14 @@ let g:OmniSharp_popup_mappings = {
 let g:OmniSharp_highlight_groups = {
 \ 'ExcludedCode': 'NonText'
 \}
+nnoremap <c-g><c-u> :OmniSharpFindUsages<cr>
+nnoremap <c-g><c-d> :OmniSharpGotoDefinition<cr>
+nnoremap <c-g><c-p> :OmniSharpPreviewDefinition<cr>
+function! s:CBCodeFormat() abort
+    noautocmd write
+    set nomodified
+endfunction
+autocmd BufWriteCmd *.cs call OmniSharp#actions#format#Format(function('s:CBCodeFormat'))
 
 
 " Plugin: ctrlp
