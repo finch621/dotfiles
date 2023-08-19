@@ -538,7 +538,8 @@ let g:OmniSharp_server_use_net6 = 1
 
 " popup color scheme not using contrasting color pallet so set it to white for the safest highlight
 " TODO: I know there is something need to set dynamically here but can't pinpoint for now so yea..
-"hi CocFloating ctermbg=white
+au ColorScheme * hi! link CocMenuSel PmenuSel
+hi CocFloating ctermbg=white
 
 " Plugin: ctrlp
 let g:ctrlp_map='<leader>f'
