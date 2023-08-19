@@ -1,9 +1,9 @@
 # Insert your preferred key mappings here.
 unmap d
-map <c-d> scrollPageDown
+map <c-j> scrollPageDown
 
 unmap u
-map <c-u> scrollPageUp
+map <c-k> scrollPageUp
 
 unmap K
 map ,k nextTab

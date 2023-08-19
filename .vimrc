@@ -445,6 +445,10 @@ vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 nmap <leader>s :sp<cr><c-w><c-w>
 nmap <leader>v :vsp<cr><c-w><c-w>
 
+" half page scrolls remaps
+nnoremap <c-k> <c-u>
+nnoremap <c-j> <c-d>
+
 " Plugin: nerdtree
 let g:NERDTreeWinPos='right'
 map <leader><tab> :NERDTreeToggle<cr>
