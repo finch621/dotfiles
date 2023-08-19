@@ -14,11 +14,12 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 " syntax, language & frameworks support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'omnisharp/omnisharp-vim'
-
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
@@ -261,8 +262,8 @@ map <leader>x :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>X :bufdo bd<cr>
 
-map <leader>k :bnext<cr>
-map <leader>j :bprevious<cr>
+map <c-k> :bnext<cr>
+map <c-j> :bprevious<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -430,7 +431,7 @@ augroup myvimrc
 augroup END
 
 " open vim in a seperate window
-map <leader>vm :vsp ~/.vimrc<cr>
+map <leader>vm :vsp ~/dotfiles/.vimrc<cr>
 
 " reload vim in the current window
 map <leader>vr :so $MYVIMRC<cr>
@@ -449,8 +450,8 @@ nmap <leader>s :sp<cr><c-w><c-w>
 nmap <leader>v :vsp<cr><c-w><c-w>
 
 " half page scrolls remaps
-nnoremap <c-k> <c-u>
-nnoremap <c-j> <c-d>
+"nnoremap <c-k> <c-u>
+"nnoremap <c-j> <c-d>
 
 " Plugin: nerdtree
 let g:NERDTreeWinPos='right'
@@ -495,7 +496,7 @@ nnoremap <leader>gdw :Git diff --word-diff<cr>
 nnoremap <leader>gds :Git diff --staged<cr>
 nnoremap <leader>glo :silent! Git log --oneline --decorate<cr>
 nnoremap <leader>gap :Git add --patch<cr>
-nnoremap <leader>gca :Git commit --verbose --all<cr>
+nnoremap <leader>gc :Git commit --verbose<cr>
 nnoremap <leader>gc! :Git commit --verbose --amend<cr>
 nnoremap <leader>gco :Git checkout<space>
 nnoremap <leader>gsh :Git show<cr>
@@ -519,30 +520,55 @@ nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
 
 " Plugin: coc.nvim
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
 inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<C-g>u\<CR>"
-"" use <tab> to trigger completion and navigate to the next complete item
+"" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ CheckBackspace() ? "\<TAB>" :
+      \ coc#refresh()
+
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-inoremap <silent><expr> <Tab>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
-inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+let g:coc_snippet_next = '<tab>'
+
+"" popup color scheme not using contrasting color pallet so set it to white for the safest highlight
+"" TODO: I know there is something need to set dynamically here but can't pinpoint for now so yea..
+au ColorScheme * hi! link CocMenuSel PmenuSel
+hi CocFloating ctermbg=white
 
 " Plugin: omnisharp
 let g:omnisharp_server_stdio = 0
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_popup_position = 'peek'
+if has('nvim')
+  let g:OmniSharp_popup_options = {
+  \ 'winblend': 30,
+  \ 'winhl': 'Normal:Normal,FloatBorder:ModeMsg',
+  \ 'border': 'rounded'
+  \}
+else
+  let g:OmniSharp_popup_options = {
+  \ 'highlight': 'Normal',
+  \ 'padding': [0],
+  \ 'border': [1],
+  \ 'borderchars': ['─', '│', '─', '│', '╭', '╮', '╯', '╰'],
+  \ 'borderhighlight': ['ModeMsg']
+  \}
+endif
+let g:OmniSharp_popup_mappings = {
+\ 'sigNext': '<C-n>',
+\ 'sigPrev': '<C-p>',
+\ 'pageDown': ['<C-f>', '<PageDown>'],
+\ 'pageUp': ['<C-b>', '<PageUp>']
+\}
+let g:OmniSharp_highlight_groups = {
+\ 'ExcludedCode': 'NonText'
+\}
 
-" popup color scheme not using contrasting color pallet so set it to white for the safest highlight
-" TODO: I know there is something need to set dynamically here but can't pinpoint for now so yea..
-au ColorScheme * hi! link CocMenuSel PmenuSel
-hi CocFloating ctermbg=white
 
 " Plugin: ctrlp
 let g:ctrlp_map='<leader>f'
