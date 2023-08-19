@@ -1,3 +1,22 @@
+call plug#begin('~/.vim/plugins')
+" vim enhancements
+Plug 'flazz/vim-colorschemes'
+Plug 'scrooloose/nerdcommenter'
+Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
+Plug 'xuyuanp/nerdtree-git-plugin'
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'puremourning/vimspector'
+Plug 'ntpeters/vim-better-whitespace'
+
+" syntax, language & frameworks support
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
+Plug 'omnisharp/omnisharp-vim'
+
+call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
 "       Amir Salihefendic - @amix3k
@@ -44,7 +63,7 @@ au FocusGained,BufEnter * checktime
 
 " With a map leader it's possible to do extra key combinations
 " like <leader>w saves the current file
-let mapleader = ","
+let mapleader=","
 
 " quick norm mode
 imap jk <esc>
@@ -151,7 +170,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 try
-    colorscheme solarized
+   colorscheme solarized
 catch
 endtry
 
@@ -192,7 +211,9 @@ set smarttab
 
 " 1 tab == 4 spaces
 set shiftwidth=4
-set tabstop=4
+set softtabstop=4
+
+set expandtab
 
 " Linebreak on 500 characters
 set lbr
@@ -226,10 +247,10 @@ map <C-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 " Smart way to move between windows
-map <leader>j <C-W>j
-map <leader>k <C-W>k
-map <leader>h <C-W>h
-map <leader>l <C-W>l
+map <leader>jj <C-W>j
+map <leader>kk <C-W>k
+map <leader>hh <C-W>h
+map <leader>ll <C-W>l
 
 " Close the current buffer
 map <leader>x :Bclose<cr>:tabclose<cr>gT
@@ -237,8 +258,8 @@ map <leader>x :Bclose<cr>:tabclose<cr>gT
 " Close all the buffers
 map <leader>X :bufdo bd<cr>
 
-map <leader>b :bnext<cr>
-map <leader>B :bprevious<cr>
+map <leader>k :bnext<cr>
+map <leader>j :bprevious<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -248,9 +269,9 @@ map <leader>tm :tabmove
 map <leader>tb :tabnext<cr>
 
 " Let 'tl' toggle between this and the last accessed tab
-let g:lasttab = 1
+let g:lasttab=1
 nmap <leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
+au TabLeave * let g:lasttab=tabpagenr()
 
 
 " Opens a new tab with the current buffer's path
@@ -302,8 +323,8 @@ endif
 
 " Delete trailing white space on save, useful for some filetypes ;)
 fun! CleanExtraSpaces()
-    let save_cursor = getpos(".")
-    let old_query = getreg('/')
+    let save_cursor=getpos(".")
+    let old_query=getreg('/')
     silent! %s/\s\+$//e
     call setpos('.', save_cursor)
     call setreg('/', old_query)
@@ -357,8 +378,8 @@ endfunction
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-    let l:currentBufNum = bufnr("%")
-    let l:alternateBufNum = bufnr("#")
+    let l:currentBufNum=bufnr("%")
+    let l:alternateBufNum=bufnr("#")
 
     if buflisted(l:alternateBufNum)
         buffer #
@@ -380,11 +401,11 @@ function! CmdLine(str)
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
-    let l:saved_reg = @"
+    let l:saved_reg=@"
     execute "normal! vgvy"
 
-    let l:pattern = escape(@", "\\/.*'$^~[]")
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+    let l:pattern=escape(@", "\\/.*'$^~[]")
+    let l:pattern=substitute(l:pattern, "\n$", "", "")
 
     if a:direction == 'gv'
         call CmdLine("Ack '" . l:pattern . "' " )
@@ -392,12 +413,142 @@ function! VisualSelection(direction, extra_filter) range
         call CmdLine("%s" . '/'. l:pattern . '/')
     endif
 
-    let @/ = l:pattern
-    let @" = l:saved_reg
+    let @/=l:pattern
+    let @"=l:saved_reg
 endfunction
 
-" Auto reload vimrc file on edit/save
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MyVimRc
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" auto reload vimrc file on edit/save
 augroup myvimrc
     au!
         au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
 augroup END
+
+" open vim in a seperate window
+map <leader>vm :vsp ~/.vimrc<cr>
+
+" reload vim in the current window
+map <leader>vr :so $MYVIMRC<cr>
+
+" install plugins
+nmap <leader>i :PlugInstall<cr>
+
+" move quickly
+imap <c-d> <c-[>diwi
+
+" search and replace visually selected text
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" split windows
+nmap <leader>s :sp<cr><c-w><c-w>
+nmap <leader>v :vsp<cr><c-w><c-w>
+
+" Plugin: nerdtree
+let g:NERDTreeWinPos='right'
+map <leader><tab> :NERDTreeToggle<cr>
+
+" Plugin: airline
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline_theme='solarized'
+
+if !exists('g:airline_symbols')
+    let g:airline_symbols={}
+endif
+
+" unicode symbols
+let g:airline_left_sep='»'
+let g:airline_left_sep='▶'
+let g:airline_right_sep='«'
+let g:airline_right_sep='◀'
+let g:airline_symbols.linenr='␊'
+let g:airline_symbols.linenr='␤'
+let g:airline_symbols.linenr='¶'
+let g:airline_symbols.branch='⎇'
+let g:airline_symbols.paste='ρ'
+let g:airline_symbols.paste='Þ'
+let g:airline_symbols.paste='∥'
+let g:airline_symbols.whitespace='Ξ'
+
+" airline symbols
+let g:airline_left_sep=''
+let g:airline_left_alt_sep=''
+let g:airline_right_sep=''
+let g:airline_right_alt_sep=''
+let g:airline_symbols.branch=''
+let g:airline_symbols.readonly=''
+let g:airline_symbols.linenr=''
+
+" Plugin: vim-fugitive
+nnoremap <leader>gs :Git status<cr>
+nnoremap <leader>gf :Git add -p<cr>
+nnoremap <leader>gc :Git commit -v -q<cr>
+nnoremap <leader>ga :Git commit --amend<cr>
+nnoremap <leader>gt :Git commit -v -q %<cr>
+nnoremap <leader>gd :Git diff<cr>
+nnoremap <leader>ge :Git edit<cr>
+nnoremap <leader>gr :Git read<cr>
+nnoremap <leader>gw :Git write<cr><CR>
+nnoremap <leader>gl :silent! Git log --oneline<cr>
+nnoremap <leader>gp :Git grep<space>
+nnoremap <leader>gm :Git move<space>
+nnoremap <leader>gb :Git branch<space>
+nnoremap <leader>go :Git checkout<space>
+
+" Plugin: gitgutter
+highlight clear SignColumn
+
+" Plugin: puremourning/vimspector
+let g:vimspector_enable_winbar=0
+nnoremap <leader>dd :call vimspector#Launch()<cr>
+nnoremap <leader>dR :call vimspector#Reset()<cr>
+nnoremap <leader>dc :call vimspector#Continue()<cr>
+nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<cr>
+nnoremap <leader>dT :call vimspector#ClearBreakpoints()<cr>
+nmap <leader>dr <Plug>VimspectorRestart
+nmap <leader>dl <Plug>VimspectorStepInto
+nmap <leader>dh <Plug>VimspectorStepOut
+nmap <leader>dj <Plug>VimspectorStepOver
+"" neovim limitations
+nmap <leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
+
+" Plugin: coc.nvim
+inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+inoremap <silent><expr> <cr> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm() : "\<C-g>u\<CR>"
+"" use <tab> to trigger completion and navigate to the next complete item
+function! CheckBackspace() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <Tab>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr> <Tab> coc#pum#visible() ? coc#pum#next(1) : "\<Tab>"
+inoremap <expr> <S-Tab> coc#pum#visible() ? coc#pum#prev(1) : "\<S-Tab>"
+
+" Plugin: omnisharp
+let g:omnisharp_server_stdio = 0
+let g:OmniSharp_server_use_net6 = 1
+
+" popup color scheme not using contrasting color pallet so set it to white for the safest highlight
+" TODO: I know there is something need to set dynamically here but can't pinpoint for now so yea..
+"hi CocFloating ctermbg=white
+
+" Plugin: ctrlp
+let g:ctrlp_map='<leader>f'
+let g:ctrlp_working_path_mode='r'
+let g:ctrlp_show_hidden=1
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'some_bad_symbolic_links',
+  \ }
