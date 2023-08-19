@@ -436,7 +436,7 @@ map <leader>vr :so $MYVIMRC<cr>
 nmap <leader>i :PlugInstall<cr>
 
 " move quickly
-imap <c-d> <c-[>diwi
+"imap <c-d> <c-[>diwi
 
 " search and replace visually selected text
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
