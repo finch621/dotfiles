@@ -485,21 +485,17 @@ let g:airline_symbols.branch=''
 let g:airline_symbols.readonly=''
 let g:airline_symbols.linenr=''
 
-" Plugin: vim-fugitive
-nnoremap <leader>gs :Git status<cr>
-nnoremap <leader>gf :Git add -p<cr>
-nnoremap <leader>gc :Git commit -v -q<cr>
-nnoremap <leader>ga :Git commit --amend<cr>
-nnoremap <leader>gt :Git commit -v -q %<cr>
-nnoremap <leader>gd :Git diff<cr>
-nnoremap <leader>ge :Git edit<cr>
-nnoremap <leader>gr :Git read<cr>
-nnoremap <leader>gw :Git write<cr><CR>
-nnoremap <leader>gl :silent! Git log --oneline<cr>
-nnoremap <leader>gp :Git grep<space>
-nnoremap <leader>gm :Git move<space>
-nnoremap <leader>gb :Git branch<space>
-nnoremap <leader>go :Git checkout<space>
+" Plugin: fugitive
+nnoremap <leader>gsb :Git status --short --branch<cr>
+nnoremap <leader>gd :Git diff<cr> 
+nnoremap <leader>gdw :Git diff --word-diff<cr>
+nnoremap <leader>gds :Git diff --staged<cr>
+nnoremap <leader>glo :silent! Git log --oneline --decorate<cr>
+nnoremap <leader>gap :Git add --patch<cr>
+nnoremap <leader>gca :Git commit --verbose --all<cr>
+nnoremap <leader>gc! :Git commit --verbose --amend<cr>
+nnoremap <leader>gco :Git checkout<space>
+nnoremap <leader>gsh :Git show<cr>
 
 " Plugin: gitgutter
 highlight clear SignColumn
@@ -556,3 +552,4 @@ let g:ctrlp_custom_ignore = {
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
+
