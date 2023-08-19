@@ -16,10 +16,12 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'inside/vim-search-pulse'
 
 " syntax, language & frameworks support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'omnisharp/omnisharp-vim'
+Plug 'jiangmiao/auto-pairs'
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
@@ -434,7 +436,7 @@ augroup END
 map <leader>vm :vsp ~/dotfiles/.vimrc<cr>
 
 " reload vim in the current window
-map <leader>vr :so $MYVIMRC<cr>
+map <leader>mv :so $MYVIMRC<cr>
 
 " install plugins
 nmap <leader>i :PlugInstall<cr>
@@ -548,7 +550,6 @@ let g:OmniSharp_server_use_net6 = 1
 let g:OmniSharp_popup_position = 'peek'
 if has('nvim')
   let g:OmniSharp_popup_options = {
-  \ 'winblend': 30,
   \ 'winhl': 'Normal:Normal,FloatBorder:ModeMsg',
   \ 'border': 'rounded'
   \}
