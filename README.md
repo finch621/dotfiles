@@ -1,4 +1,5 @@
 # dotfiles
+## TODO: review outdated info
 
 ## Pre-requisites:
 - install vim, neovim, tmux, zsh, oh-my-zsh, nerd-fonts [Hack](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/Hack)
