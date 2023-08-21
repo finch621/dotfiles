@@ -22,7 +22,10 @@ Plug 'inside/vim-search-pulse'
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'omnisharp/omnisharp-vim'
 Plug 'jiangmiao/auto-pairs'
+Plug 'w0rp/ale'
+
 call plug#end()
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Maintainer:
 "       Amir Salihefendic - @amix3k
@@ -503,6 +506,7 @@ nnoremap <leader>gc! :Git commit --verbose --amend<cr>
 nnoremap <leader>gco :Git checkout<space>
 nnoremap <leader>gsh :Git show<cr>
 nnoremap <leader>gbl :Git blame -b -w<cr>
+nnoremap <leader>gpo :Git push origin<space>
 
 " Plugin: gitgutter
 highlight clear SignColumn
@@ -523,8 +527,6 @@ nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
 
 " Plugin: coc.nvim
-inoremap <expr> <cr> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
-inoremap <silent><expr> <cr> coc#pum#visible() ? coc#_select_confirm() : "\<C-g>u\<CR>"
 "" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#_select_confirm() :
@@ -574,11 +576,11 @@ let g:OmniSharp_highlight_groups = {
 nnoremap <c-g><c-u> :OmniSharpFindUsages<cr>
 nnoremap <c-g><c-d> :OmniSharpGotoDefinition<cr>
 nnoremap <c-g><c-p> :OmniSharpPreviewDefinition<cr>
-function! s:CBCodeFormat() abort
-    noautocmd write
-    set nomodified
-endfunction
-autocmd BufWriteCmd *.cs call OmniSharp#actions#format#Format(function('s:CBCodeFormat'))
+"function! s:CBCodeFormat() abort
+    "noautocmd write
+    "set nomodified
+"endfunction
+"autocmd BufWriteCmd *.cs call OmniSharp#actions#format#Format(function('s:CBCodeFormat'))
 
 
 " Plugin: ctrlp
@@ -589,7 +591,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|/node_modules',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -602,3 +604,11 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+" Plugin: ale
+let g:ale_disable_lsp=1
+let g:ale_sign_column_always=1
+let g:airline#extensions#ale#enabled=1
+let g:ale_sign_error='❌'
+let g:ale_sign_warning='💩'
+hi clear ALEErrorSign
+hi clear ALEWarningSign
