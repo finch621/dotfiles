@@ -1,5 +1,6 @@
 call plug#begin('~/.vim/plugins')
-" vim enhancements
+
+" enhancements
 Plug 'flazz/vim-colorschemes'
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree', { 'on': ['NERDTreeToggle', 'NERDTreeFind'] }
@@ -527,24 +528,42 @@ nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
 
 " Plugin: coc.nvim
-"" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#_select_confirm() :
-      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
-      \ CheckBackspace() ? "\<TAB>" :
-      \ coc#refresh()
 
+set signcolumn=yes
+"" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-
 let g:coc_snippet_next = '<tab>'
+inoremap <silent><expr> <TAB>
+        \ coc#pum#visible() ? coc#_select_confirm() :
+        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+        \ CheckBackspace() ? "\<TAB>" :
+        \ coc#refresh()
 
-"" popup color scheme not using contrasting color pallet so set it to white for the safest highlight
-"" TODO: I know there is something need to set dynamically here but can't pinpoint for now so yea..
-au ColorScheme * hi! link CocMenuSel PmenuSel
-hi CocFloating ctermbg=white
+" go previous selection
+inoremap <expr> <c-j> coc#pum#visible() ? coc#pum#next(1) : "\<c-j>"
+inoremap <expr> <c-k> coc#pum#visible() ? coc#pum#prev(1) : "\<c-k>"
+
+" goto code navigation
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gp <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" use K to show documentation in the pum window
+"nnoremap <silent> K :call ShowDocumentation()<cr>
+"function! ShowDocumentation()
+    "if CocAction('hasProvider', 'hover')
+        "call CocActionAsync('doHover')
+    "else
+        "call feedkeys('K', 'in')
+    "endif
+"endfunction
+
+"" popup color bg hi workaround
+autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
 
 " Plugin: omnisharp
 let g:omnisharp_server_stdio = 0
@@ -567,8 +586,8 @@ endif
 let g:OmniSharp_popup_mappings = {
 \ 'sigNext': '<C-n>',
 \ 'sigPrev': '<C-p>',
-\ 'pageDown': ['<C-f>', '<PageDown>'],
-\ 'pageUp': ['<C-b>', '<PageUp>']
+\ 'pageDown': ['<C-j>', '<PageDown>'],
+\ 'pageUp': ['<C-k>', '<PageUp>']
 \}
 let g:OmniSharp_highlight_groups = {
 \ 'ExcludedCode': 'NonText'
