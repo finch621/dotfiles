@@ -123,8 +123,8 @@ set cmdheight=1
 set hid
 
 " Configure backspace so it acts as it should act
-" set backspace=eol,start,indent
-" set whichwrap+=<,>,h,l
+set backspace=eol,start,indent
+set whichwrap+=<,>,h,l
 
 " Ignore case when searching
 set ignorecase
@@ -221,6 +221,7 @@ set smarttab
 
 " 1 tab == 4 spaces
 set shiftwidth=4
+    
 set softtabstop=4
 
 set expandtab
@@ -428,16 +429,22 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MyVimRc
+" => NeoVim specific configurations
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" implicitly enable '+' and '*' registers
+set clipboard+=unnamedplus
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => MyVimRc
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " auto reload vimrc file on edit/save
-augroup myvimrc
-    au!
-        au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
-augroup END
+"augroup myvimrc
+    "au!
+        "au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+"augroup END
 
 " open vim in a seperate window
-map <leader>vm :vsp ~/dotfiles/.vimrc<cr>
+map <leader>vm :vsp ~/.vimrc<cr>
 
 " reload vim in the current window
 map <leader>mv :so $MYVIMRC<cr>
@@ -497,7 +504,7 @@ let g:airline_symbols.linenr=''
 
 " Plugin: fugitive
 nnoremap <leader>gsb :Git status --short --branch<cr>
-nnoremap <leader>gd :Git diff<cr> 
+nnoremap <leader>gd :Git diff<cr>
 nnoremap <leader>gdw :Git diff --word-diff<cr>
 nnoremap <leader>gds :Git diff --staged<cr>
 nnoremap <leader>glo :silent! Git log --oneline --decorate<cr>

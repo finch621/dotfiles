@@ -11,6 +11,7 @@ fi
 ## neovim
 if [[ -x $(command -v nvim) ]]; then
   alias nv=nvim
+  alias nvm=nvim
 fi
 
 ## pnpm
