@@ -18,12 +18,15 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'inside/vim-search-pulse'
+Plug 'tpope/vim-surround'
 
 " syntax, language & frameworks support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'omnisharp/omnisharp-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 
 call plug#end()
 
@@ -221,7 +224,6 @@ set smarttab
 
 " 1 tab == 4 spaces
 set shiftwidth=4
-    
 set softtabstop=4
 
 set expandtab
@@ -369,7 +371,7 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 map <leader>e :e ~/buffer<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>ex :e ~/buffer.md<cr>
+map <leader>md :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
@@ -537,12 +539,13 @@ xmap <leader>di <Plug>VimspectorBalloonEval
 " Plugin: coc.nvim
 
 set signcolumn=yes
+"set updatetime=300
 "" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
+let g:coc_snippet_next = '<tab>'
 function! CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
-let g:coc_snippet_next = '<tab>'
 inoremap <silent><expr> <TAB>
         \ coc#pum#visible() ? coc#_select_confirm() :
         \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
@@ -553,11 +556,17 @@ inoremap <silent><expr> <TAB>
 inoremap <expr> <c-j> coc#pum#visible() ? coc#pum#next(1) : "\<c-j>"
 inoremap <expr> <c-k> coc#pum#visible() ? coc#pum#prev(1) : "\<c-k>"
 
+" navigating diagnostics
+"nmap <silent> [g <Plug>(coc-diagnostic-prev)
+"nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
 " goto code navigation
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gp <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+
+nmap <leader>fx <Plug>(coc-fix-current)
 
 " use K to show documentation in the pum window
 "nnoremap <silent> K :call ShowDocumentation()<cr>
@@ -632,9 +641,33 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Plugin: ale
 let g:ale_disable_lsp=1
+let g:ale_use_neovim_diagnostics_api = 1
 let g:ale_sign_column_always=1
+let g:ale_virtualtext_cursor='disabled'
+
 let g:airline#extensions#ale#enabled=1
+let g:ale_sign_priority=8
+let g:gitgutter_sign_priority=9
 let g:ale_sign_error='❌'
 let g:ale_sign_warning='💩'
 hi clear ALEErrorSign
 hi clear ALEWarningSign
+
+" Write this in your vimrc file
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_insert_leave = 0
+" You can disable this option too
+" if you don't want linters to run on opening a file
+let g:ale_lint_on_enter = 0
+
+" Write this in your vimrc file
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+let g:ale_open_list = 1
+" Set this if you want to.
+" This can be useful if you are combining ALE with
+" some other plugin which sets quickfix errors, etc.
+let g:ale_keep_list_window_open = 1
+
+nmap <silent> [e <Plug>(ale_previous_wrap)
+nmap <silent> ]e <Plug>(ale_next_wrap)

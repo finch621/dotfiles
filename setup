@@ -20,6 +20,6 @@ ln -nsf "$PWD"/.vim ~/.vim
 ln -nsf "$PWD"/nvim-config ~/.config/nvim
 ln -nsf "$PWD"/.vim/autoload/plug.vim "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
 
-vim +PlugInstall +qall
+nvim +PlugInstall +qall
 
 echo "Setup is complete"

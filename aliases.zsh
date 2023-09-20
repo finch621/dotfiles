@@ -4,6 +4,8 @@
 alias b="systemctl -i poweroff"
 alias rb=reboot
 alias wtf=fuck
+alias sup="sudo apt update"
+alias sug="sudo apt upgrade"
 if [[ $(uname) == 'Darwin' ]]; then
   alias b="sudo shutdown -h now"
 fi

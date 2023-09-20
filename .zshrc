@@ -52,9 +52,15 @@ ZSH_THEME="agnoster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  zsh-autosuggestions
+  zsh-syntax-highlighting
+  sudo
   git
+  web-search
+  copybuffer
   wd
   tmux
+  history
   thefuck
   dotnet
 )
@@ -102,9 +108,11 @@ if [ -f $HOME/.dir_colors/dircolors ]
 fi
 
 # pnpm
-export PNPM_HOME="$HOME/.local/share/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
+#export PNPM_HOME="$HOME/.local/share/pnpm"
+#case ":$PATH:" in
+  #*":$PNPM_HOME:"*) ;;
+  #*) export PATH="$PNPM_HOME:$PATH" ;;
+#esac
 # pnpm end
+
+export PATH=$PATH:$HOME/.dotnet/tools
