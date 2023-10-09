@@ -1,5 +1,9 @@
 # If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -116,3 +120,11 @@ fi
 # pnpm end
 
 export PATH=$PATH:$HOME/.dotnet/tools
+export EDITOR="vi --clean"
+
+# bit
+case ":$PATH:" in
+  *":/home/doffi/bin:"*) ;;
+  *) export PATH="$PATH:/home/doffi/bin" ;;
+esac
+# bit end

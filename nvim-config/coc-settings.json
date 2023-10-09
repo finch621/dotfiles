@@ -1,3 +1,11 @@
 {
-    "diagnostic.displayByAle": true
+  "diagnostic.displayByAle": true,
+  "languageserver": {
+    "graphql": {
+      "command": "graphql-lsp",
+      "args": ["server", "-m", "stream"],
+      "filetypes": ["graphql", "typescript", "typescriptreact"]
+    }
+  },
+  "coc.preferences.formatOnSave": true
 }

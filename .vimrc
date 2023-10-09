@@ -22,11 +22,14 @@ Plug 'tpope/vim-surround'
 
 " syntax, language & frameworks support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'omnisharp/omnisharp-vim'
+Plug 'Omnisharp/omnisharp-vim'
 Plug 'jiangmiao/auto-pairs'
 Plug 'w0rp/ale'
-Plug 'pangloss/vim-javascript'
-Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'KabbAmine/vCoolor.vim'
+Plug 'jparise/vim-graphql'
+Plug 'prisma/vim-prisma'
 
 call plug#end()
 
@@ -222,9 +225,9 @@ set expandtab
 " Be smart when using tabs ;)
 set smarttab
 
-" 1 tab == 4 spaces
-set shiftwidth=4
-set softtabstop=4
+" 1 tab == 2 spaces
+set shiftwidth=2
+set softtabstop=2
 
 set expandtab
 
@@ -511,12 +514,14 @@ nnoremap <leader>gdw :Git diff --word-diff<cr>
 nnoremap <leader>gds :Git diff --staged<cr>
 nnoremap <leader>glo :silent! Git log --oneline --decorate<cr>
 nnoremap <leader>gap :Git add --patch<cr>
+nnoremap <leader>gal :Git add --all<cr>
 nnoremap <leader>gc :Git commit --verbose<cr>
 nnoremap <leader>gc! :Git commit --verbose --amend<cr>
 nnoremap <leader>gco :Git checkout<space>
 nnoremap <leader>gsh :Git show<cr>
 nnoremap <leader>gbl :Git blame -b -w<cr>
 nnoremap <leader>gpo :Git push origin<space>
+nnoremap <leader>grs :Git reset --<cr>
 
 " Plugin: gitgutter
 highlight clear SignColumn
@@ -537,9 +542,8 @@ nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
 
 " Plugin: coc.nvim
-
 set signcolumn=yes
-"set updatetime=300
+set updatetime=300
 "" Make <tab> used for trigger completion, completion confirm, snippet expand and jump like VSCode.
 let g:coc_snippet_next = '<tab>'
 function! CheckBackspace() abort
@@ -582,7 +586,6 @@ nmap <leader>fx <Plug>(coc-fix-current)
 autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
 
 " Plugin: omnisharp
-let g:omnisharp_server_stdio = 0
 let g:OmniSharp_server_use_net6 = 1
 let g:OmniSharp_popup_position = 'peek'
 if has('nvim')
@@ -611,11 +614,11 @@ let g:OmniSharp_highlight_groups = {
 nnoremap <c-g><c-u> :OmniSharpFindUsages<cr>
 nnoremap <c-g><c-d> :OmniSharpGotoDefinition<cr>
 nnoremap <c-g><c-p> :OmniSharpPreviewDefinition<cr>
-"function! s:CBCodeFormat() abort
-    "noautocmd write
-    "set nomodified
-"endfunction
-"autocmd BufWriteCmd *.cs call OmniSharp#actions#format#Format(function('s:CBCodeFormat'))
+function! s:CBCodeFormat() abort
+    noautocmd write
+    set nomodified
+endfunction
+autocmd BufWriteCmd *.cs call OmniSharp#actions#format#Format(function('s:CBCodeFormat'))
 
 
 " Plugin: ctrlp
@@ -626,7 +629,7 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_custom_ignore = {
-  \ 'dir':  '\v[\/]\.(git|hg|svn)$|/node_modules',
+  \ 'dir':  '\v[\/]\.(git|hg|svn)$|/node_modules|/dist',
   \ 'file': '\v\.(exe|so|dll)$',
   \ 'link': 'some_bad_symbolic_links',
   \ }
@@ -646,8 +649,8 @@ let g:ale_sign_column_always=1
 let g:ale_virtualtext_cursor='disabled'
 
 let g:airline#extensions#ale#enabled=1
-let g:ale_sign_priority=8
-let g:gitgutter_sign_priority=9
+let g:ale_sign_priority=9
+let g:gitgutter_sign_priority=8
 let g:ale_sign_error='❌'
 let g:ale_sign_warning='💩'
 hi clear ALEErrorSign
@@ -669,5 +672,6 @@ let g:ale_open_list = 1
 " some other plugin which sets quickfix errors, etc.
 let g:ale_keep_list_window_open = 1
 
+nmap <leader>r :cclose<cr>
 nmap <silent> [e <Plug>(ale_previous_wrap)
 nmap <silent> ]e <Plug>(ale_next_wrap)
