@@ -1,0 +1,10 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\n\n## translate <esc> key\ntranslate <c-c> <c-[>\n\n## no new blank tab always use 'o' or 'O' to open new tab\nunmap t\n\nunmap d\nmap <c-d> scrollPageDown\n\nunmap u\nmap <c-u> scrollPageUp\n\nunmap K\nmap <c-k> nextTab\n\nunmap J\nmap <c-j> previousTab\n\nunmap H\nmap <c-h> goBack\n\nunmap L\nmap <c-l> goForward\n\nunmap ^\nmap ` visitPreviousTab\n\nmap $ closeTabsOnRight\n\nunmap T\nmap ,f Vomnibar.activateTabSelection\n\nunmap X\nmap <c-o> restoreTab",
+  "settingsVersion": "2.0.5",
+  "exclusionRules": [
+    {
+      "passKeys": "",
+      "pattern": "https?://leetcode.com/problems/*"
+    }
+  ]
+}
