@@ -21,3 +21,9 @@ if [[ -x $(command -v pnpm) ]]; then
     alias pn=pnpm
     alias px=pnpx
 fi
+
+## dotnet override
+if [[ -x $(command -v dotnet) ]]; then
+  alias dn=dotnet
+  alias dnn="dn new"
+fi

@@ -19,6 +19,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
+Plug 'vim-scripts/BufOnly.vim'
 
 " syntax, language & frameworks support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -30,6 +31,7 @@ Plug 'peitalin/vim-jsx-typescript'
 Plug 'KabbAmine/vCoolor.vim'
 Plug 'jparise/vim-graphql'
 Plug 'prisma/vim-prisma'
+Plug 'jlcrochet/vim-razor'
 
 call plug#end()
 
@@ -269,10 +271,10 @@ map <leader>hh <C-W>h
 map <leader>ll <C-W>l
 
 " Close the current buffer
-map <leader>x :Bclose<cr>:tabclose<cr>gT
+map <leader>x :Bclose<cr>
 
 " Close all the buffers
-map <leader>X :bufdo bd<cr>
+map <leader>X :BufOnly<cr>
 
 map <c-k> :bnext<cr>
 map <c-j> :bprevious<cr>
@@ -474,6 +476,7 @@ nmap <leader>v :vsp<cr><c-w><c-w>
 " Plugin: nerdtree
 let g:NERDTreeWinPos='right'
 map <leader><tab> :NERDTreeToggle<cr>
+map <leader>gg :NERDTreeFind<cr>
 
 " Plugin: airline
 let g:airline_powerline_fonts=1
@@ -512,6 +515,7 @@ nnoremap <leader>gsb :Git status --short --branch<cr>
 nnoremap <leader>gd :Git diff<cr>
 nnoremap <leader>gdw :Git diff --word-diff<cr>
 nnoremap <leader>gds :Git diff --staged<cr>
+nnoremap <leader>gdv :Gvdiffsplit<cr>
 nnoremap <leader>glo :silent! Git log --oneline --decorate<cr>
 nnoremap <leader>gap :Git add --patch<cr>
 nnoremap <leader>gal :Git add --all<cr>
@@ -611,9 +615,11 @@ let g:OmniSharp_popup_mappings = {
 let g:OmniSharp_highlight_groups = {
 \ 'ExcludedCode': 'NonText'
 \}
-nnoremap <c-g><c-u> :OmniSharpFindUsages<cr>
+nnoremap <c-g><c-r> :OmniSharpFindUsages<cr>
 nnoremap <c-g><c-d> :OmniSharpGotoDefinition<cr>
-nnoremap <c-g><c-p> :OmniSharpPreviewDefinition<cr>
+nnoremap <c-g><c-p> :OmniSharpPreviewImplementation<cr>
+nnoremap <c-f><c-u> :OmniSharpFixUsings<cr>
+nnoremap <c-d><c-t> :OmniSharpDebugTest<cr>
 function! s:CBCodeFormat() abort
     noautocmd write
     set nomodified
