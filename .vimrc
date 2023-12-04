@@ -591,7 +591,7 @@ autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
 
 " Plugin: omnisharp
 let g:OmniSharp_server_use_net6 = 1
-let g:OmniSharp_popup_position = 'peek'
+let g:OmniSharp_popup_position = 'atcursor'
 if has('nvim')
   let g:OmniSharp_popup_options = {
   \ 'winhl': 'Normal:Normal,FloatBorder:ModeMsg',
@@ -607,19 +607,24 @@ else
   \}
 endif
 let g:OmniSharp_popup_mappings = {
+\ 'lineDown': ['<C-e>', '<C-j>'],
+\ 'lineUp': ['<C-y>', '<C-k>'],
+\ 'pageDown': ['<C-d>', '<PageDown>'],
+\ 'pageUp': ['<C-u>', '<PageUp>'],
 \ 'sigNext': '<C-n>',
-\ 'sigPrev': '<C-p>',
-\ 'pageDown': ['<C-j>', '<PageDown>'],
-\ 'pageUp': ['<C-k>', '<PageUp>']
+\ 'sigPrev': '<C-p>'
 \}
 let g:OmniSharp_highlight_groups = {
 \ 'ExcludedCode': 'NonText'
 \}
-nnoremap <c-g><c-r> :OmniSharpFindUsages<cr>
-nnoremap <c-g><c-d> :OmniSharpGotoDefinition<cr>
-nnoremap <c-g><c-p> :OmniSharpPreviewImplementation<cr>
 nnoremap <c-f><c-u> :OmniSharpFixUsings<cr>
+nnoremap <c-f><c-g> :OmniSharpGetCodeActions<cr>
+nnoremap <c-g><c-g> :OmniSharpFindUsages<cr>
+nnoremap <c-g><c-l> :OmniSharpGotoDefinition<cr>
+nnoremap <c-g><c-d> :OmniSharpPreviewDefinition<cr>
+nnoremap <c-g><c-p> :OmniSharpPreviewImplementation<cr>
 nnoremap <c-d><c-t> :OmniSharpDebugTest<cr>
+nnoremap <c-d><c-p> :OmniSharpDebugProject<cr>
 function! s:CBCodeFormat() abort
     noautocmd write
     set nomodified
