@@ -11,19 +11,13 @@ if [[ $(uname) == 'Darwin' ]]; then
 fi
 
 ## neovim
-if [[ -x $(command -v nvim) ]]; then
-  alias nv=nvim
-  alias nvm=nvim
-fi
+alias nv=nvim
+alias nvm=nvim
 
 ## pnpm
-if [[ -x $(command -v pnpm) ]]; then
-    alias pn=pnpm
-    alias px=pnpx
-fi
+alias pn=pnpm
+alias px=pnpx
 
 ## dotnet override
-if [[ -x $(command -v dotnet) ]]; then
-  alias dn=dotnet
-  alias dnn="dn new"
-fi
+alias dn=dotnet
+alias dnn="dn new"

@@ -67,6 +67,7 @@ plugins=(
   history
   thefuck
   dotnet
+  shrink-path
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -120,6 +121,7 @@ fi
 # pnpm end
 
 export PATH=$PATH:$HOME/.dotnet/tools
+export DOTNET_ROOT=/usr/lib/dotnet
 export EDITOR="vi --clean"
 
 # bit

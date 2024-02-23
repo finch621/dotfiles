@@ -14,12 +14,15 @@ Plug 'puremourning/vimspector'
 Plug 'ntpeters/vim-better-whitespace'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-pack/nvim-spectre'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.2' }
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'inside/vim-search-pulse'
 Plug 'tpope/vim-surround'
 Plug 'vim-scripts/BufOnly.vim'
+"Plug 'Exafunction/codeium.vim', { 'branch': 'main' }
+Plug 'ryanoasis/vim-devicons'
 
 " syntax, language & frameworks support
 Plug 'neoclide/coc.nvim', { 'branch': 'release' }
@@ -32,6 +35,7 @@ Plug 'KabbAmine/vCoolor.vim'
 Plug 'jparise/vim-graphql'
 Plug 'prisma/vim-prisma'
 Plug 'jlcrochet/vim-razor'
+Plug 'rest-nvim/rest.nvim'
 
 call plug#end()
 
@@ -475,6 +479,7 @@ nmap <leader>v :vsp<cr><c-w><c-w>
 
 " Plugin: nerdtree
 let g:NERDTreeWinPos='right'
+let g:NERDTreeWinSize=41
 map <leader><tab> :NERDTreeToggle<cr>
 map <leader>gg :NERDTreeFind<cr>
 
@@ -537,6 +542,7 @@ nnoremap <leader>dR :call vimspector#Reset()<cr>
 nnoremap <leader>dc :call vimspector#Continue()<cr>
 nnoremap <leader>dt :call vimspector#ToggleBreakpoint()<cr>
 nnoremap <leader>dT :call vimspector#ClearBreakpoints()<cr>
+nmap <leader>db <Plug>VimspectorBreakpoints
 nmap <leader>dr <Plug>VimspectorRestart
 nmap <leader>dl <Plug>VimspectorStepInto
 nmap <leader>dh <Plug>VimspectorStepOut
@@ -569,9 +575,9 @@ inoremap <expr> <c-k> coc#pum#visible() ? coc#pum#prev(1) : "\<c-k>"
 "nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " goto code navigation
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gp <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gl <Plug>(coc-definition)
+nmap <silent> gd <Plug>(coc-type-definition)
+nmap <silent> gp <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 nmap <leader>fx <Plug>(coc-fix-current)
@@ -591,6 +597,8 @@ autocmd VimEnter,ColorScheme * hi! link CocFloating CocHintFloat
 
 " Plugin: omnisharp
 let g:OmniSharp_server_use_net6 = 1
+let g:OmniSharp_selector_ui = 'fzf'    " Use fzf
+let g:OmniSharp_selector_findusages = 'fzf'
 let g:OmniSharp_popup_position = 'atcursor'
 if has('nvim')
   let g:OmniSharp_popup_options = {
@@ -618,8 +626,8 @@ let g:OmniSharp_highlight_groups = {
 \ 'ExcludedCode': 'NonText'
 \}
 nnoremap <c-f><c-u> :OmniSharpFixUsings<cr>
-nnoremap <c-f><c-g> :OmniSharpGetCodeActions<cr>
-nnoremap <c-g><c-g> :OmniSharpFindUsages<cr>
+nnoremap <c-f><c-x> :OmniSharpGetCodeActions<cr>
+nnoremap <c-g><c-r> :OmniSharpFindUsages<cr>
 nnoremap <c-g><c-l> :OmniSharpGotoDefinition<cr>
 nnoremap <c-g><c-d> :OmniSharpPreviewDefinition<cr>
 nnoremap <c-g><c-p> :OmniSharpPreviewImplementation<cr>

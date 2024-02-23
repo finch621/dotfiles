@@ -7,5 +7,6 @@
       "filetypes": ["graphql", "typescript", "typescriptreact"]
     }
   },
-  "coc.preferences.formatOnSave": true
+  "coc.preferences.formatOnSave": true,
+  "prettier.singleQuote": true
 }
